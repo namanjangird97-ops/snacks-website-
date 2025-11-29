@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #fff3e6;
+  color: #3e2c22;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px 15px;
+  border-bottom: 1px solid #fd5f00;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  height: 40px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #3e2c22;
+}
+
+
+
+.banner-text {
+  background-color: #d70024;
+  color: white;
+  font-weight: 500;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.products-section {
+  padding: 15px;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.products-header h2 {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.products-header p {
+  color: #7a4b43;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.view-all {
+  display: inline-flex;
+  align-items: center;
+  background-color: #c69c5e;
+  color: white;
+padding: 6px 12px;
+border-radius: 20px;
+text-decoration: none;
+font-weight: 500;
+} 
+
+/* 1. Container setup */
+.product-listing-container {
+display: grid;
+grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+gap: 20px; /* Space between items */
+padding: 10px;
+justify-content: center;
+overflow-x: hidden; /* hide horizontal scrollbar when wrapping */
+}
+
+/* 2. मुख्य प्रोडक्ट कार्ड स्टाइल */
+.product-card {
+  /* कार्ड का आकार (चौड़ाई) - default: 3 per row */
+  flex: 0 0 calc((100% - 40px) / 3); /* (100% - (columns-1)*gap) / 3 => subtract 2 gaps of 20px */
+  max-width: calc((100% - 40px) / 3);
+    background-color: #ffffff;
+    /* पहले फोटो जैसा हल्का बॉर्डर (Pill-shaped) */
+    border-radius: 15px; 
+    padding: 15px;
+    
+    /* हल्का बॉक्स शैडो (Box Shadow) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+    
+    /* हॉवर (Hover) पर स्मूथ ट्रांजिशन */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    position: relative;
+    /* हल्दीराम्स की वेबसाइट जैसा घुमावदार किनारों वाला स्टाइल */
+  border: 1px solid #ddd;
+}
+
+/* हॉवर इफ़ेक्ट - कार्ड को थोड़ा उठाएँ */
+.product-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* कार्ड थोड़ा ऊपर उठेगा */
+}
+
+/* 3. इमेज स्टाइल */
+.product-image-container img {
+  /* इमेज को कार्ड की चौड़ाई के अनुसार रखें */
+  width: 100%;
+  height: auto;
+  /* इमेज को हॉवर पर थोड़ा बड़ा करने के लिए ट्रांजिशन */
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-container img {
+  transform: scale(1.05); /* हॉवर पर इमेज हल्की बड़ी होगी */
+}
+
+/* Responsive breakpoints: 2 columns on medium screens, 1 column on small screens */
+@media (max-width: 900px) {
+  .product-card {
+    flex: 0 0 calc((100% - 20px) / 2); /* one gap between two cards */
+    max-width: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* 4. डिटेल्स और टेक्स्ट स्टाइलिंग */
+.product-details {
+    padding: 10px 0;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* कीमत स्टाइल */
+.product-price {
+    font-size: 20px;
+    color: #000; /* नई कीमत */
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block; /* एक नई लाइन में दिखाने के लिए */
+}
+
+.old-price {
+    font-size: 14px;
+    color: #999;
+    /* पुरानी कीमत को काटने के लिए */
+    text-decoration: line-through; 
+    font-weight: normal;
+    margin-right: 5px;
+}
+
+.discount-percent {
+    font-size: 14px;
+    color: #e53935; /* लाल रंग */
+    font-weight: bold;
+}
+
+/* 5. फ़ुटकर (Footer) बटन स्टाइल (हल्दीराम्स जैसा) */
+.card-footer {
+    display: flex;
+    justify-content: center; /* बटन को केंद्र में लाएँ */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.add-button, .wishlist-button {
+    background: none;
+    border: 1px solid #ddd; /* हल्का बॉर्डर */
+    border-radius: 50%; /* गोल आकार */
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #888;
+}
+
+.add-button {
+    /* '+' बटन के लिए हल्का हरा रंग */
+    border-color: #4CAF50; 
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* हॉवर इफ़ेक्ट */
+.add-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.wishlist-button:hover {
+    color: #e53935; /* हार्ट को लाल करें */
+    border-color: #e53935;
+}
+
+/* 6. हल्दीराम्स जैसा घुमावदार बॉर्डर (वैकल्पिक) */
+/* यह थोड़ा जटिल है और Pseudo-elements का उपयोग करता है */
+/* आप इसे न लगाएं तो भी कार्ड आकर्षक दिखेंगे */
+/* यदि आप exact घुमावदार कोने चाहते हैं: */
+.product-card::before, .product-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f4f4f4; /* बैकग्राउंड कलर */
+}
+
+.product-card::before {
+    top: -1px; /* ऊपर की ओर */
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    border-radius: 0 50% 0 50%;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.product-card::after {
+    bottom: -1px; /* नीचे की ओर */
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    border-radius: 50% 0 50% 0;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
