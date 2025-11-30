@@ -1,2 +1,2 @@
 # snacks-website-
-i work on create  a snacks  website
+A responsive frontend design for a snacks and beverage shop.
